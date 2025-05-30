@@ -1,4 +1,4 @@
-package org.toucandev.tuples;
+package io.toucandev.tuples;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;

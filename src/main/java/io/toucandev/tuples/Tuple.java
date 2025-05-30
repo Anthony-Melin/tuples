@@ -1,4 +1,4 @@
-package org.toucandev.tuples;
+package io.toucandev.tuples;
 
 public class Tuple<R, S, T, U, V, W> implements ITuple<R, S, T, U, V, W> {
     private final R r;

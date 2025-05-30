@@ -1,4 +1,4 @@
-package org.toucandev.tuples;
+package io.toucandev.tuples;
 
 public interface IPair<R, S> {
     R get0();

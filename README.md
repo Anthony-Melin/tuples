@@ -13,7 +13,7 @@ Library of tuples for Java.
 ## Examples of usage
 
 ```java
-import org.toucandev.tuples.Tuple;
+import io.toucandev.tuples.Tuple;
 
 class MainApplication {
     void mainMethod() {
