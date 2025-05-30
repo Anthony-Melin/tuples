@@ -7,7 +7,7 @@
     <url>https://github.com/Anthony-Melin/tuples</url>
     <groupId>io.github.anthony-melin</groupId>
     <artifactId>tuples</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -18,7 +18,7 @@
         <connection>scm:git:https://github.com/Anthony-Melin/tuples.git</connection>
         <developerConnection>scm:git:git@github.com:Anthony-Melin/tuples.git</developerConnection>
         <url>https://github.com/Anthony-Melin/tuples</url>
-      <tag>v1.0.1</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <licenses>
