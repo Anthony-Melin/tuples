@@ -6,21 +6,21 @@ permissions:
 on:
   workflow_dispatch:
     inputs:
-      tag:
-        description: 'Tag for the release'
+      version:
+        description: 'Version for the release'
         required: true
         type: string
 
 jobs:
   run:
-    name: Package
+    name: Upload
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       SERVER_USER: ${{ secrets.MAVEN_SERVER_USER }}
       SERVER_TOKEN: ${{ secrets.MAVEN_SERVER_PASSWORD }}
-      RELEASE: ${{ inputs.tag }}
-      TAG: v${{ inputs.tag }}
+      RELEASE: ${{ inputs.version }}
+      TAG: v${{ inputs.version }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -40,7 +40,7 @@ jobs:
           git config --global user.name "Anthony-Melin"
       
       - name: Maven prepare release
-        run: mvn release:prepare -DpushChanges=false -Dtag=v$TAG -DdevelopmentVersion=1.0.0-SNAPSHOT -DreleaseVersion=$RELEASE
+        run: mvn release:prepare -DpushChanges=false -Dtag=$TAG -DdevelopmentVersion=1.0.0-SNAPSHOT -DreleaseVersion=$RELEASE
 
       - name: Set up tag
         run: |
