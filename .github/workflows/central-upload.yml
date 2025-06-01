@@ -16,3 +16,5 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - run: mvn package -DskipTests
+      - run: mvn release:prepare -Dtag=v1.1.3 -DdevelopmentVersion=1.0.0-SNAPSHOT -DreleaseVersion=1.1.3
+      - run: mvn deploy
