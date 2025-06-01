@@ -19,8 +19,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
           server-id: central
-          server-username: ${{ secrets.MAVEN_SERVER_USER }}
-          server-password: ${{ secrets.MAVEN_SERVER_PASSWORD }}
+          server-username: MVN_CENTRAL_USER
+          server-password: MVN_CENTRAL_TOKEN
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
       - run: git config --global user.email "anthony.melin@laposte.net"
       - run: git config --global user.name "Anthony-Melin"
