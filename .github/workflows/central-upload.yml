@@ -19,8 +19,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
           server-id: central
-          server-username: MVN_CENTRAL_USER
-          server-password: MVN_CENTRAL_TOKEN
+          server-username: SERVER_USER
+          server-password: SERVER_TOKEN
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
       - run: git config --global user.email "anthony.melin@laposte.net"
       - run: git config --global user.name "Anthony-Melin"
@@ -29,3 +29,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: mvn deploy
+        env:
+          SERVER_USER: ${{ secrets.MAVEN_SERVER_USER }}
+          SERVER_TOKEN: ${{ secrets.MAVEN_SERVER_PASSWORD }}
