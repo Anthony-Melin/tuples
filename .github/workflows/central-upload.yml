@@ -5,6 +5,11 @@ permissions:
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag for the release'
+        required: true
+        type: string
 
 jobs:
   run:
@@ -13,7 +18,9 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       SERVER_USER: ${{ secrets.MAVEN_SERVER_USER }}
-      SERVER_TOKEN: ${{ secrets.MAVEN_SERVER_PASSWORD }}  
+      SERVER_TOKEN: ${{ secrets.MAVEN_SERVER_PASSWORD }}
+      RELEASE: ${{ inputs.tag }}
+      TAG: v${{ inputs.tag }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -33,12 +40,12 @@ jobs:
           git config --global user.name "Anthony-Melin"
       
       - name: Maven prepare release
-        run: mvn release:prepare -DpushChanges=false -Dtag=v1.1.3 -DdevelopmentVersion=1.0.0-SNAPSHOT -DreleaseVersion=1.1.3
+        run: mvn release:prepare -DpushChanges=false -Dtag=v$TAG -DdevelopmentVersion=1.0.0-SNAPSHOT -DreleaseVersion=$RELEASE
 
       - name: Set up tag
         run: |
           git push --tag origin
-          git checkout v1.1.3
+          git checkout $TAG
 
       - name: Maven deploy
         run: mvn deploy -DskipTests
