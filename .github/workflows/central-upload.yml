@@ -1,14 +1,11 @@
-name: Compile & Test
+name: Upload new release to central
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
-  run:
-    name: run
+  prepare:
+    name: Prepare
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,5 +15,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - run: mvn compile
-      - run: mvn test
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - run: mvn package -DskipTests
