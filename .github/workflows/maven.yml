@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  prepare:
+  run:
     name: Prepare
     runs-on: ubuntu-latest
     steps:
@@ -19,16 +19,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-  compile:
-    name: Compile
-    runs-on: ubuntu-latest
-    needs: prepare
-    steps:
-    - run: mvn compile
+    - name: Compile
+      run: mvn compile
 
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    needs: compile
-    steps:
-    - run: mvn test
+    - name: Test
+      run: mvn test
