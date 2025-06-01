@@ -32,5 +32,5 @@ jobs:
     - name: Test
       run: mvn test
     - name: Package
-      if: ${{github.event.push}}
+      if: ${{ github.event_name == 'push' }}
       run: mvn package -DskipTests
