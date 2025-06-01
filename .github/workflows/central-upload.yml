@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  prepare:
-    name: Prepare
+  run:
+    name: Package
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,8 +15,4 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - run: mvn package -DskipTests
+      - run: mvn package -DskipTests
