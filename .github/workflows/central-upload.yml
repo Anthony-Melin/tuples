@@ -2,6 +2,7 @@ name: Upload new release to central
 
 permissions:
   contents: write
+  pages: write
 
 on:
   workflow_dispatch:
