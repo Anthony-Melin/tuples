@@ -3,6 +3,7 @@ name: Upload new release to central
 permissions:
   contents: write
   pages: write
+  id-token: write
 
 on:
   workflow_dispatch:
